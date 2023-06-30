@@ -1,0 +1,33 @@
+@content3: content3;
+.@{content3}-wrapper {
+  background-color: #fafafa;
+  min-height: 26rem;
+  .@{content3} {
+    height: 100%;
+    overflow: hidden;
+    padding: 4rem 2rem;
+    .slick-dots {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{content3}-wrapper {
+    .@{content3} {
+      padding: 0 2rem;
+      &-block-wrapper {
+        margin: 20px auto;
+        height: auto;
+        .@{content3}-block {
+          .@{content3}-title {
+            font-size: 20px;
+          }
+          &.queue-anim-leaving {
+            position: relative !important;
+          }
+        }
+      }
+    }
+  }
+}

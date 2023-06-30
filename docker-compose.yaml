@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  dashboard:
+    image: cas-dashboard
+    restart: always
+    # cmd:
+    ports:
+      - 3000:3000

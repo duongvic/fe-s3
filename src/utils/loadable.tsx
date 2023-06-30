@@ -1,0 +1,40 @@
+import React, { lazy, Suspense } from 'react';
+import { Row, Spin } from 'antd';
+
+interface Opts {
+  fallback: React.ReactNode;
+}
+type Unpromisify<T> = T extends Promise<infer P> ? P : never;
+
+export const lazyLoad = <
+  T extends Promise<any>,
+  U extends React.ComponentType<any>
+>(
+  importFunc: () => T,
+  selectorFunc?: (s: Unpromisify<T>) => U,
+  opts: Opts = { fallback: null },
+) => {
+  let lazyFactory: () => Promise<{ default: U }> = importFunc;
+
+  if (selectorFunc) {
+    lazyFactory = () =>
+      importFunc().then(module => ({ default: selectorFunc(module) }));
+  }
+
+  const LazyComponent = lazy(lazyFactory);
+
+  return (props: React.ComponentProps<U>): JSX.Element => (
+    <Suspense fallback={opts.fallback!}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
+};
+
+export const Loadable = input =>
+  lazyLoad(input, module => module.default, {
+    fallback: (
+      <Row justify="center" align="middle" style={{ height: '100vh' }}>
+        <Spin size="large" />
+      </Row>
+    ),
+  });

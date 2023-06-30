@@ -1,0 +1,143 @@
+.header-default {
+  height: 6.5rem;
+  background: #093c6e;
+  padding-top: 0;
+  transition: height 0s;
+}
+
+.header-scroll {
+  height: 4rem;
+  background: white;
+  padding-top: 5px;
+  transition: height 1s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-landing {
+  position: fixed;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  &--top {
+    box-sizing: border-box;
+    font-size: 12px;
+  }
+  .text-white,
+  a,
+  span {
+    color: white !important;
+    &:hover {
+      color: #1da57a !important;
+      & > span {
+        color: #1da57a !important;
+      }
+    }
+  }
+  .text-black {
+    color: black !important;
+    &:hover {
+      color: #1da57a !important;
+    }
+    span {
+      color: black !important;
+      &:hover {
+        color: #1da57a !important;
+      }
+    }
+  }
+
+  ul {
+    border: none;
+  }
+  .navbar {
+    background-color: transparent;
+  }
+  &--divider {
+    background-color: #3f688e;
+    margin: 0.4rem !important;
+    position: relative;
+    right: 6px;
+  }
+  &--bottom {
+    .landing-menu {
+      background: transparent;
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 5px;
+    }
+  }
+}
+
+.language {
+  width: fit-content;
+  .nation-icon {
+    width: 1rem;
+  }
+}
+
+.header-mobile {
+  display: none;
+  background: #093c6e;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  padding: 0.5rem;
+  a,
+  span {
+    color: white;
+    &:hover {
+      color: #1da57a;
+    }
+  }
+}
+
+.sider-landing {
+  position: absolute;
+  display: none;
+  height: 100vh;
+  z-index: 999;
+  background: #001529;
+  .ant-affix {
+    .ant-layout-sider {
+      height: 100vh;
+      &-children {
+        padding-top: 1rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .sider-landing {
+    display: block;
+  }
+  .header-landing {
+    display: none;
+  }
+  .header-mobile {
+    &--language {
+      padding: 0;
+    }
+    display: flex;
+    justify-content: space-between;
+    .ant-row {
+      justify-content: space-between;
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  .header-mobile {
+    .ant-row {
+      justify-content: flex-end;
+    }
+    &--language,
+    a.signup-button {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 280px) {
+  .header-mobile {
+    flex-wrap: nowrap;
+  }
+}

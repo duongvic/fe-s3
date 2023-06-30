@@ -1,0 +1,57 @@
+@content1: content1;
+.@{content1}-wrapper {
+  background-color: #fafafa;
+  height: fit-content;
+  min-height: 49rem;
+  .@{content1} {
+    padding: 4rem 2rem;
+    .slick-slide {
+      padding: 0 0.3rem;
+    }
+    .slick-dots{
+      display: none !important;
+    }
+    .package {
+      height: 38rem;
+      background-image: url('../../../../../assets/img/landing/bg_sp1.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      &--header {
+        background-image: url('../../../../../assets/img/landing/bg_sp.png');
+        height: 13.1rem;
+        .title {
+          height: 3rem;
+        }
+      }
+    }
+    .ant-btn {
+      width: 10rem;
+    }
+    .direct-button {
+      font-size: 1.5rem;
+      height: fit-content;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{content1}-wrapper {
+    overflow: hidden;
+    .@{content1} {
+      ul {
+        li {
+          display: block;
+          width: 100%;
+          padding: 2%;
+          span {
+            height: 168px;
+          }
+          p {
+            position: relative;
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
